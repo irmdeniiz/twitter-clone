@@ -10,12 +10,10 @@ const Feed = () => {
   const [user, setUser] = useState();
 
   useEffect(() => {
-    // kullanıcı hesap bilgilerini al ve state'e aktar
     const unsub = onAuthStateChanged(auth, (user_data) => {
       setUser(user_data);
     });
 
-    // componentWillUnmount tetiklendiğinde yani bileşen ekrandan ayrıldığında kullanıcı oturumunu izlemeyi durdur
     return () => {
       unsub();
     };
