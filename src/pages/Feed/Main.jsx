@@ -9,25 +9,19 @@ const Main = ({ user }) => {
   const [tweets, setTweets] = useState();
 
   useEffect(() => {
-    // verilerin alınıcağı kolleksiyonun referansnı al
+    
     const ref = collection(db, "tweets");
 
-    // sorgu ayarlarını yap
     const q = query(ref, orderBy("createdAt", "desc"));
 
-    // kolleksiyona abone ol
     const unsub = onSnapshot(q, (snapshot) => {
-      // tweet'lerin geçici olarak tutulacağı dizi
       const temp = [];
 
-      // doc'ların içerisindeki veriye erişip geçici dizye aktar
       snapshot.docs.forEach((doc) => temp.push({ id: doc.id, ...doc.data() }));
 
-      // state'i güncelle
       setTweets(temp);
     });
 
-    // bileşen ekrandan ayrıldığında aboneliği durdur
     return () => unsub();
   }, []);
 
