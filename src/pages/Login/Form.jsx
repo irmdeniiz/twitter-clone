@@ -20,7 +20,7 @@ const Form = () => {
     e.preventDefault();
 
     if (isSignUp) {
-      // Yeni kullanıcı hesabı oluştur
+    
       createUserWithEmailAndPassword(auth, email, pass)
         .then(() => {
           toast.success("Hesabınız oluşturuldu");
@@ -28,7 +28,7 @@ const Form = () => {
         })
         .catch((err) => toast.error("Hata!: " + err.code));
     } else {
-      // Varolan hesaba giriş yap
+    
       signInWithEmailAndPassword(auth, email, pass)
         .then(() => {
           toast.success("Hesaba giriş yapıldı");
