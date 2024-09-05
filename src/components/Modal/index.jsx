@@ -8,27 +8,20 @@ import { toast } from "react-toastify";
 const Modal = ({ tweet, close }) => {
   const [isPicDeleting, setIsPicDeleting] = useState(false);
 
-  // form gönderilince
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // inputlardaki verilere eriş
     const text = e.target[0].value;
     const file = e.target[1]?.files && e.target[1].files[0];
 
-    // güncellenicek olan dökümanın referansını al
     const tweetRef = doc(db, "tweets", tweet.id);
 
     try {
-      // modalı kapat
       close();
 
-      // eğer yeni dosya seçildiyse
       if (file) {
-        // dosyayıyı storage'a yükle
         const url = await upload(file);
 
-        // eğer dosya seçildiyse hem yazı hem fotoğrafı güncelle
         return await updateDoc(tweetRef, {
           textContent: text,
           imageContent: url,
@@ -36,7 +29,6 @@ const Modal = ({ tweet, close }) => {
         });
       }
 
-      // eğer resim kaldırılıcaksa resim ve yazıyı güncelle
       if (isPicDeleting) {
         return await updateDoc(tweetRef, {
           textContent: text,
@@ -45,7 +37,6 @@ const Modal = ({ tweet, close }) => {
         });
       }
 
-      // eğer dosya seçilmediyse sadece yazıyı güncelle
       return await updateDoc(tweetRef, {
         textContent: text,
         isEdited: true,
