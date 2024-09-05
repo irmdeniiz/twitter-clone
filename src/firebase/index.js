@@ -12,17 +12,12 @@ const firebaseConfig = {
   appId: "1:62405735297:web:660121736b668daf7b2e80",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// auth referansını al
 export const auth = getAuth(app);
 
-// google sağlayıcısını kur
 export const provider = new GoogleAuthProvider();
 
-// veritabanın referansını al
 export const db = getFirestore(app);
 
-// storage referansını al
 export const storage = getStorage(app);
