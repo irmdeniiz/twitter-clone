@@ -8,16 +8,11 @@ import Modal from "../Modal/index";
 
 const DropDown = ({ tweet }) => {
   const [isOpen, setIsOpen] = useState(false);
-
-  // tweeti gönderen kişi şuan oturumu açık olan kullanıcı mı?
   const isOwn = tweet.user.id === auth.currentUser.uid;
 
-  // silme
   const handleDelete = () => {
-    // silinecek dökümanın referansını al
     const tweetRef = doc(db, "tweets", tweet.id);
 
-    // dökmanı kaldır
     deleteDoc(tweetRef)
       .then(() => toast.info("Tweet akıştan kaldırıldı"))
       .catch(() => toast.error("Bir sorun oluştu"));
