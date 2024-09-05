@@ -12,25 +12,18 @@ const Form = ({ user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 1) inputlardaki veriye eriş
     const text = e.target[0].value;
     const image = e.target[1].files[0];
 
-    // 2) yazı ve resim içeriği yoksa fonk durdur
     if (!text && !image) {
       return toast.warning("Lütfen içerik giriniz", { position: "bottom-right" });
     }
 
     try {
       setIsLoading(true);
-      //  3) resmi storage'a kaydet
       const url = await upload(image);
-
-      // 4) yeni tweet belgesini kolleksiyona kaydet
-      // 4.1) kolleksiyon referansı al
       const tweetsCol = collection(db, "tweets");
 
-      // 4.2) belgeyi kaydet
       await addDoc(tweetsCol, {
         textContent: text,
         imageContent: url,
@@ -44,7 +37,6 @@ const Form = ({ user }) => {
         },
       });
 
-      // 5) formu sıfırla
       e.target.reset();
     } catch (err) {
       console.log(err);
