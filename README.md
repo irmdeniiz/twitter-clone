@@ -1,5 +1,6 @@
-# Kütüphaneler
+<h1>Twitter Clone, firebase kullanılarak geliştirilmiş, Twitter'ın tweet atma, listeleme, beğenme, düzenleme ve silme özelliklerine sahip bir sosyal medya klonudur. Kullanıcılar kayıtlı e-posta veya kendi Google hesaplarıyla giriş yapabilir ve şifrenizi unutursanız şifreni mi unuttun? butonuna tıkladığı zaman seçtiği mail adresine sıfırlama e-postası alabilirler.</h1>
 
+# Kütüphaneler
 - react-router-dom
 - react-toastify
 - react-icons
