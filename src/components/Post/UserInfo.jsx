@@ -2,14 +2,10 @@ import moment from "moment";
 import { MdEdit } from "react-icons/md";
 
 const UserInfo = ({ tweet }) => {
-  // kullanıcı isminden yola çıkarak bir nickname oluşturduk
   const username =
     tweet.user.name.toLowerCase().replace(/ /g, "_") + Math.round(Math.random() * 99);
 
-  // tarih verisine eriş
   let date = tweet.createdAt?.toDate();
-
-  // moment kütüphanesiyle şuanki tarihten uzaklığını hesapla
   date = moment(date).fromNow();
 
   return (
